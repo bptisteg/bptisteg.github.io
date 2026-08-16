@@ -1,11 +1,10 @@
 const translations = {
   en: {
-    subtitle: "22 yo",
     role: 'Jet shooter in the French Navy <img class="flag-inline" src="assets/flag-fr.svg" alt="" />',
     about2:
-      'Staff on <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> and <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a>',
+      'In my free time I’m staff on <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> and <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a>!',
     about3:
-      'Building <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a> — it’s pretty hard, maybe I need help',
+      'I like to code. Currently building a new Discord music bot named <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a>. It’s pretty hard... maybe I need help 😭',
     listening: "Listening on Spotify",
     notListening: "Not listening right now",
     copyEmail: "Copy email",
@@ -18,12 +17,11 @@ const translations = {
     },
   },
   fr: {
-    subtitle: "22 ans",
-    role: 'Opérateur manutention d\'aéronerf · Marine nationale <img class="flag-inline" src="assets/flag-fr.svg" alt="" />',
+    role: 'Opérateur manutention d\'aéronerf dans la Marine nationale <img class="flag-inline" src="assets/flag-fr.svg" alt="" />',
     about2:
-      'Staff sur <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> et <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a>',
+      'Sur mon temps libre, je suis staff sur <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> et <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a> !',
     about3:
-      'Je construis <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a> — c’est assez dur, maybe I need help',
+      "J’aime coder. En train de faire un bot musique Discord, <a href=\"https://discord.gg/tkvtbsd7gA\" target=\"_blank\" rel=\"noopener noreferrer\">MeowBot</a>. C’est assez dur... peut-être j’aurais besoin d’un peu d’aide 😭",
     listening: "Écoute sur Spotify",
     notListening: "Rien en ce moment",
     copyEmail: "Copier l’e-mail",
