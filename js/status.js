@@ -1,7 +1,7 @@
 const DISCORD_ID = "225349654974431232";
 const SOCKET_URL = "wss://api.lanyard.rest/socket";
 const REST_URL = `https://api.lanyard.rest/v1/users/${DISCORD_ID}`;
-const EMAIL = "hello@bptisteg.dev";
+const EMAIL = "bptisteg@gmail.com";
 
 const statusEl = document.querySelector(".status");
 const bubbleEl = document.querySelector(".status-bubble");
