@@ -11,8 +11,8 @@
     <meta name="description" content="Jet shooter in the French Navy. I dev stuffs." />
     <meta property="og:title" content="Baptiste G." />
     <meta property="og:description" content="Jet shooter in the French Navy." />
-    <meta property="og:image" content="https://bptisteg.github.io/assets/pfp.png" />
-    <meta property="og:url" content="https://bptisteg.github.io/" />
+    <meta property="og:image" content="https://bptisteg.dev/assets/pfp.png" />
+    <meta property="og:url" content="https://bptisteg.dev/" />
     <title>Baptiste G.</title>
     <link rel="icon" type="image/png" href="assets/pfp.png" />
     <link rel="apple-touch-icon" href="assets/pfp.png" />
@@ -22,6 +22,21 @@
     <div class="banner" aria-hidden="true">
       <img src="assets/banner.png" alt="" />
     </div>
+
+    <p class="clock" id="clock" aria-label="Paris time">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8" />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          d="M12 7.2V12l3.2 2"
+        />
+      </svg>
+      <time id="clock-time">00:00:00</time>
+      <span>Paris</span>
+    </p>
 
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="fr" aria-label="Français">
@@ -131,9 +146,9 @@
           type="button"
           class="mail-btn"
           id="copy-email"
-          tooltip="bptisteg@gmail.com"
+          tooltip="hello@bptisteg.dev"
           aria-label="Copy email"
-          data-email="bptisteg@gmail.com"
+          data-email="hello@bptisteg.dev"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -162,6 +177,7 @@
       </div>
     </div>
     <script src="js/i18n.js"></script>
+    <script src="js/clock.js"></script>
     <script src="js/status.js"></script>
   </body>
 </html>

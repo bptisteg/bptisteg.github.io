@@ -43,6 +43,56 @@ body {
   background: linear-gradient(180deg, transparent 0%, rgba(211, 211, 211, 0.2) 55%, lightgray 100%);
 }
 
+.clock {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.clock svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.clock time,
+.spotify-times span {
+  display: inline-block;
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.clock time {
+  width: 8ch;
+}
+
+.spotify-times span {
+  width: 5ch;
+}
+
+#spotify-current {
+  text-align: left;
+}
+
+#spotify-duration {
+  text-align: right;
+}
+
 .lang-switch {
   position: fixed;
   top: 16px;
@@ -367,7 +417,6 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   color: #c8c8c8;
-  font-variant-numeric: tabular-nums;
 }
 
 .spotify-eq {

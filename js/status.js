@@ -1,7 +1,7 @@
 const DISCORD_ID = "225349654974431232";
 const SOCKET_URL = "wss://api.lanyard.rest/socket";
 const REST_URL = `https://api.lanyard.rest/v1/users/${DISCORD_ID}`;
-const EMAIL = "bptisteg@gmail.com";
+const EMAIL = "hello@bptisteg.dev";
 
 const statusEl = document.querySelector(".status");
 const bubbleEl = document.querySelector(".status-bubble");
@@ -144,7 +144,7 @@ function updateSpotify(spotify) {
 
   function formatTime(ms) {
     const total = Math.max(0, Math.floor(ms / 1000));
-    const minutes = Math.floor(total / 60);
+    const minutes = String(Math.floor(total / 60)).padStart(2, "0");
     const seconds = String(total % 60).padStart(2, "0");
     return `${minutes}:${seconds}`;
   }

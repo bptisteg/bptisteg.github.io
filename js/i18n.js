@@ -21,7 +21,7 @@ const translations = {
     about2:
       'Sur mon temps libre, je suis staff sur <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> et <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a> !',
     about3:
-      "J’aime coder. En train de faire un bot musique Discord, <a href=\"https://discord.gg/tkvtbsd7gA\" target=\"_blank\" rel=\"noopener noreferrer\">MeowBot</a>. C’est assez dur... peut-être j’aurais besoin d’un peu d’aide 😭",
+      "J’aime coder. En train de faire un bot musique Discord, <a href=\"https://discord.gg/tkvtbsd7gA\" target=\"_blank\" rel=\"noopener noreferrer\">MeowBot</a>. C’est assez dur... aidez-moi 😭",
     listening: "Écoute sur Spotify",
     notListening: "Rien en ce moment",
     copyEmail: "Copier l’e-mail",
