@@ -4,7 +4,7 @@ const translations = {
     about2:
       'In my free time I’m staff on <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> and <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a>!',
     about3:
-      'I like to code. Currently building a new Discord music bot named <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a>. It’s pretty hard... maybe I need help 😭',
+      'I like to code. I’m currently working on two bot projects: a music bot called <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a> and a translator bot. They’re both still in the early stages.',
     listening: "Listening on Spotify",
     notListening: "Not listening right now",
     copyEmail: "Copy email",
@@ -21,7 +21,7 @@ const translations = {
     about2:
       'Sur mon temps libre, je suis staff sur <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a> et <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a> !',
     about3:
-      "J’aime coder. En train de faire un bot musique Discord, <a href=\"https://discord.gg/tkvtbsd7gA\" target=\"_blank\" rel=\"noopener noreferrer\">MeowBot</a>. C’est assez dur... aidez-moi 😭",
+      "J’aime coder. Je travaille actuellement sur deux projets de bots : un bot musique appelé <a href=\"https://discord.gg/tkvtbsd7gA\" target=\"_blank\" rel=\"noopener noreferrer\">MeowBot</a> et un bot traducteur. Ils en sont encore tous les deux à leurs débuts.",
     listening: "Écoute sur Spotify",
     notListening: "Rien en ce moment",
     copyEmail: "Copier l’e-mail",
