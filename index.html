@@ -7,14 +7,15 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.scdn.co; connect-src 'self' https://api.lanyard.rest wss://api.lanyard.rest;"
     />
-    <meta name="theme-color" content="#d3d3d3" />
-    <meta name="description" content="Jet shooter in the French Navy. I dev stuffs." />
+    <meta name="theme-color" content="#36393f" />
+    <meta name="description" content="Baptiste G. creates Discord bots and web projects while serving in the French Navy." />
     <meta property="og:title" content="Baptiste G." />
-    <meta property="og:description" content="Jet shooter in the French Navy." />
-    <meta property="og:image" content="https://bptisteg.github.io/assets/pfp.png" />
+    <meta property="og:description" content="Discord bots, web projects and community staff work by Baptiste G." />
+    <meta property="og:image" content="https://bptisteg.github.io/assets/banner.png" />
+    <meta property="og:image:alt" content="Baptiste G." />
     <meta property="og:url" content="https://bptisteg.github.io/" />
     <title>Baptiste G.</title>
-    <link rel="icon" type="image/png" href="assets/pfp.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👋🏻%3C/text%3E%3C/svg%3E" />
     <link rel="apple-touch-icon" href="assets/pfp.png" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -22,21 +23,6 @@
     <div class="banner" aria-hidden="true">
       <img src="assets/banner.png" alt="" />
     </div>
-
-    <p class="clock" id="clock" aria-label="Paris time">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8" />
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          d="M12 7.2V12l3.2 2"
-        />
-      </svg>
-      <time id="clock-time">00:00:00</time>
-      <span>Paris</span>
-    </p>
 
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="fr" aria-label="Français">
@@ -46,6 +32,19 @@
       <button type="button" data-lang="en" aria-label="English">
         <img src="assets/flag-gb.svg" alt="" />
         EN
+      </button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Switch to light theme">
+        <span class="theme-icon theme-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
+          </svg>
+        </span>
+        <span class="theme-icon theme-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" />
+          </svg>
+        </span>
       </button>
     </div>
 
@@ -66,17 +65,51 @@
 
       <div class="about">
         <p data-i18n-html="about2">
-          In my free time I’m staff on
-          <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">Ticket Tool</a>
+          In my free time, I'm staff for
+          <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">
+            <img class="company-logo" src="assets/icons/tickettool.png" alt="" />
+            Ticket Tool
+          </a>
           and
-          <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">BeamMP</a>!
+          <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">
+            <img class="company-logo" src="assets/icons/beammp.png" alt="" />
+            BeamMP
+          </a>
         </p>
         <p data-i18n-html="about3">
-          I like to code. I’m currently working on two bot projects: a music bot called
-          <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">MeowBot</a>
-          and a translator bot. They’re both still in the early stages.
+      I like to code <img class="discord-emoji" src="assets/1500212724829917365.gif" alt="" /> I'm currently working on some Discord bot projects, which are still in the early stages.
         </p>
       </div>
+
+      <section class="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title" data-i18n="projectsTitle">Projects &amp; Communities</h2>
+        <div class="project-grid">
+          <a class="project" href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/tickettool.png" alt="" />
+            <span class="project-copy">
+              <strong>Ticket Tool</strong>
+              <span data-i18n="ticketDescription">Discord ticket management for communities.</span>
+                <small class="project-status status-community" data-i18n="communityStatus">Community staff</small>
+            </span>
+          </a>
+          <a class="project" href="https://beammp.com" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/beammp.png" alt="" />
+            <span class="project-copy">
+              <strong>BeamMP</strong>
+              <span data-i18n="beamDescription">Multiplayer tooling for BeamNG.drive.</span>
+                <small class="project-status status-community" data-i18n="communityStatus">Community staff</small>
+            </span>
+          </a>
+          <a class="project" href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">
+            <img src="assets/meowbot.png" alt="" />
+            <span class="project-copy">
+              <strong>MeowBot</strong>
+              <span data-i18n="meowDescription">A music bot project built for Discord.</span>
+                <small class="project-status status-development" data-i18n="developmentStatus">In development</small>
+            </span>
+          </a>
+        </div>
+      </section>
 
       <a
         class="spotify idle"
@@ -115,20 +148,6 @@
 
       <div class="socials">
         <a
-          href="https://discord.gg/tkvtbsd7gA"
-          target="_blank"
-          rel="noopener noreferrer"
-          tooltip="MeowBot"
-          aria-label="MeowBot Discord"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M19.27 5.33A17.4 17.4 0 0 0 15.07 4l-.4.74a16.1 16.1 0 0 1 4.05 1.3C14.8 4.73 9.2 4.73 5.28 6.04A16.2 16.2 0 0 1 9.33 4.74L8.93 4A17.5 17.5 0 0 0 4.7 5.35C1.85 9.64 1.08 13.83 1.46 17.96c1.86 1.4 3.66 2.25 5.43 2.81l1.1-1.87c-.6-.23-1.17-.51-1.71-.83.14-.1.27-.2.4-.3 3.16 1.5 6.58 1.5 9.7 0 .14.1.27.2.4.3-.54.32-1.11.6-1.71.83l1.1 1.87c1.77-.56 3.57-1.41 5.43-2.81.45-4.8-.76-8.95-3.73-12.63ZM8.86 15.33c-.95 0-1.73-.9-1.73-2s.76-2.01 1.73-2.01 1.75.9 1.73 2-.76 2.01-1.73 2.01Zm6.28 0c-.95 0-1.73-.9-1.73-2s.76-2.01 1.73-2.01 1.75.9 1.73 2-.76 2.01-1.73 2.01Z"
-            />
-          </svg>
-        </a>
-        <a
           href="https://github.com/bptisteg"
           target="_blank"
           rel="noopener noreferrer"
@@ -142,42 +161,14 @@
             />
           </svg>
         </a>
-        <button
-          type="button"
-          class="mail-btn"
-          id="copy-email"
-          tooltip="bptisteg@gmail.com"
-          aria-label="Copy email"
-          data-email="bptisteg@gmail.com"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm8 6.75L4.8 7.6 4 8.2 12 14l8-5.8-.8-.6L12 12.75Z"
-            />
-          </svg>
-        </button>
       </div>
-
-      <div class="links">
-        <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">
-          <img src="assets/icons/tickettool.png" alt="" />
-          Ticket Tool
-        </a>
-        ·
-        <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">
-          <img src="assets/icons/beammp.png" alt="" />
-          BeamMP
-        </a>
-        ·
-        <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer">
-          <img src="assets/meowbot.png" alt="" />
-          MeowBot
-        </a>
-      </div>
+        <footer class="site-meta">
+          <span><span data-i18n="lastUpdated">Last updated</span>: 19 August 2026</span>
+          <span><span data-i18n="visits">Visits</span>: <strong id="visit-count">0</strong></span>
+        </footer>
     </div>
     <script src="js/i18n.js"></script>
-    <script src="js/clock.js"></script>
+      <script src="js/site.js"></script>
     <script src="js/status.js"></script>
   </body>
 </html>

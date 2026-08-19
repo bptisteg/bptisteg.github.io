@@ -1,8 +1,6 @@
 const DISCORD_ID = "225349654974431232";
 const SOCKET_URL = "wss://api.lanyard.rest/socket";
 const REST_URL = `https://api.lanyard.rest/v1/users/${DISCORD_ID}`;
-const EMAIL = "bptisteg@gmail.com";
-
 const statusEl = document.querySelector(".status");
 const bubbleEl = document.querySelector(".status-bubble");
 const spotifyBox = document.getElementById("spotify");
@@ -14,8 +12,6 @@ const spotifyBar = document.querySelector(".spotify-bar");
 const spotifyLabel = document.querySelector(".spotify-label");
 const spotifyCurrent = document.getElementById("spotify-current");
 const spotifyDuration = document.getElementById("spotify-duration");
-const mailBtn = document.getElementById("copy-email");
-
 let lastPresence = "idle";
 let lastSpotify = null;
 let progressTimer = null;
@@ -206,26 +202,6 @@ async function loadOnce() {
     /* Lanyard indisponible */
   }
 }
-
-mailBtn?.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(EMAIL);
-  } catch {
-    const field = document.createElement("textarea");
-    field.value = EMAIL;
-    document.body.appendChild(field);
-    field.select();
-    document.execCommand("copy");
-    field.remove();
-  }
-
-  mailBtn.setAttribute("tooltip", t("copied"));
-  mailBtn.classList.add("copied");
-  setTimeout(() => {
-    mailBtn.setAttribute("tooltip", t("copyEmail"));
-    mailBtn.classList.remove("copied");
-  }, 1600);
-});
 
 loadOnce();
 connectSocket();
