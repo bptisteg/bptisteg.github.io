@@ -15,8 +15,8 @@
       featFiltersDesc: "Adjust the sound to your liking with a variety of filters.",
       featFiltersTitle: "Filters",
       featMusicDesc:
-        "Song names, Spotify, SoundCloud, Apple Music, Deezer, Tidal & radio. YouTube when available.",
-      featMusicTitle: "Built for Spotify & SoundCloud",
+        "Spotify, SoundCloud, Apple Music, Deezer, Tidal, world radio & direct links.",
+      featMusicTitle: "Built for support any platform",
       featPlayerDesc: "Play music from the web with a live player.",
       featPlayerTitle: "Web Player",
       featPlaylistsDesc: "Create and manage playlists for your server with ease.",
@@ -29,7 +29,7 @@
       footerLegal: "Legal",
       footerPages: "Pages",
       footerTagline:
-        "A new kind of music bot - Spotify, SoundCloud, Apple Music, Deezer, Tidal, world radio & direct links.",
+        "A new kind of music bot for Discord.",
       inviteBot: "Invite Bot",
       joinSupport: "Join Support",
       language: "Language",

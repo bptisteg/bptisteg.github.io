@@ -6,7 +6,7 @@ const translations = {
     about3:
       'I like to code <img class="discord-emoji" src="assets/1500212724829917365.gif" alt="" /> I\'m currently working on some Discord bot projects, which are still in the early stages.',
     projectsTitle: "Projects & Communities",
-    ticketDescription: "Staff member for a Discord ticket management service.",
+    ticketDescription: "Staff member for the #1 Discord support bot",
     beamDescription: "Staff member for the BeamNG.drive multiplayer community.",
     meowDescription: "My personal music bot project for Discord.",
       communityStatus: "Community staff",
@@ -29,7 +29,7 @@ const translations = {
     about3:
       "J'aime coder <img class=\"discord-emoji\" src=\"assets/1500212724829917365.gif\" alt=\"\" /> Je travaille actuellement sur des projets de bots Discord, qui en sont encore à leurs débuts.",
     projectsTitle: "Projets et communautés",
-    ticketDescription: "Staff pour un service de gestion de tickets Discord.",
+    ticketDescription: "Staff pour le premier bot de support Discord",
     beamDescription: "Staff pour la communauté multijoueur de BeamNG.drive.",
     meowDescription: "Mon projet personnel de bot musique pour Discord.",
       communityStatus: "Staff communauté",
