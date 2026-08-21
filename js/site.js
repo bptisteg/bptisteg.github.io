@@ -33,8 +33,9 @@ function updateVisitCount() {
     window.goatcounter.visit_count({
       append: "#visit-count",
       path: "TOTAL",
+      type: "svg",
       no_branding: true,
-      attr: { "aria-label": "Total visits" },
+      attr: { width: "72", height: "22", "aria-label": "Total visits" },
     });
     return true;
   };
