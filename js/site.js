@@ -27,26 +27,20 @@ themeToggle?.addEventListener("click", () => {
 function updateVisitCount() {
   if (!visitCount) return;
 
-  const renderVisitCount = () => {
-    if (!window.goatcounter?.visit_count) return false;
-
-    window.goatcounter.visit_count({
-      append: "#visit-count",
-      path: "TOTAL",
-      type: "svg",
-      no_branding: true,
-      attr: { width: "72", height: "22", "aria-label": "Total visits" },
+  fetch("https://baptisteg.goatcounter.com/counter/TOTAL.json", { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Visit counter returned ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      const totalVisits = Number(data.count);
+      if (!Number.isFinite(totalVisits)) throw new Error("Visit counter returned an invalid count");
+      visitCount.textContent = totalVisits.toLocaleString();
+    })
+    .catch((error) => {
+      console.warn("Unable to load the shared visit counter.", error);
+      visitCount.textContent = "-";
     });
-    return true;
-  };
-
-  if (renderVisitCount()) return;
-
-  const waitForGoatCounter = window.setInterval(() => {
-    if (!renderVisitCount()) return;
-    window.clearInterval(waitForGoatCounter);
-  }, 100);
-  window.setTimeout(() => window.clearInterval(waitForGoatCounter), 5000);
 }
 
 updateVisitCount();
