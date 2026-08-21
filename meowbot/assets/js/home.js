@@ -276,12 +276,6 @@
     window.setTimeout(tick, 500);
   }
 
-  if (!localStorage.getItem("meowbot-lang")) {
-    localStorage.setItem("meowbot-lang", "en");
-  }
-  if (window.MeowBotLang && MeowBotLang.apply) MeowBotLang.apply();
-  if (window.MeowBotLang && MeowBotLang.initDropdowns) MeowBotLang.initDropdowns();
-
   var site = {
     supportUrl: "https://discord.gg/tkvtbsd7gA",
     githubUrl: "https://github.com/bptisteg",
