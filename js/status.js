@@ -1,7 +1,10 @@
 const DISCORD_ID = "225349654974431232";
 const SOCKET_URL = "wss://api.lanyard.rest/socket";
 const REST_URL = `https://api.lanyard.rest/v1/users/${DISCORD_ID}`;
+const LOCAL_DECORATION_ASSET = "a_89cd445201a0c6c64d46876503d0e90e";
 const statusEl = document.querySelector(".status");
+const statusIcon = document.querySelector(".status-icon");
+const avatarDecoration = document.querySelector(".avatar-decoration");
 const bubbleEl = document.querySelector(".status-bubble");
 const spotifyBox = document.getElementById("spotify");
 const spotifyArt = document.getElementById("spotify-art");
@@ -20,6 +23,41 @@ function statusLabel(presence) {
   return translations[window.currentLang]?.status?.[presence] || presence;
 }
 
+function statusIconPath(presence, data) {
+  if (presence === "online") {
+    const isMobile =
+      data?.client_status?.mobile ||
+      data?.active_on_discord_mobile ||
+      (location.hostname === "localhost" && !data?.active_on_discord_mobile);
+    return {
+      path: isMobile ? "assets/icons/online-mobile.png" : "assets/icons/online.png",
+      mobile: isMobile,
+    };
+  }
+  if (presence === "idle") return { path: "assets/icons/idle.png", mobile: false };
+  if (presence === "dnd") return { path: "assets/icons/DND.png", mobile: false };
+  return { path: "", mobile: false };
+}
+
+function updateAvatarDecoration(data) {
+  const asset =
+    data?.discord_user?.avatar_decoration_data?.asset ||
+    (location.hostname === "localhost" ? LOCAL_DECORATION_ASSET : "");
+  if (!avatarDecoration) return;
+
+  if (asset) {
+    avatarDecoration.src = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png?size=240`;
+    avatarDecoration.hidden = false;
+  } else {
+    avatarDecoration.removeAttribute("src");
+    avatarDecoration.hidden = true;
+  }
+}
+
+if (location.hostname === "localhost") {
+  updateAvatarDecoration({});
+}
+
 function normalizePresence(data) {
   if (!data || typeof data !== "object") return null;
   if (data.discord_status || data.spotify || data.activities || data.listening_to_spotify) {
@@ -33,6 +71,7 @@ function normalizePresence(data) {
 function applyPresence(raw) {
   const data = normalizePresence(raw);
   if (!statusEl || !data) return;
+  updateAvatarDecoration(data);
 
   const presence = ["online", "idle", "dnd", "offline"].includes(data.discord_status)
     ? data.discord_status
@@ -41,6 +80,16 @@ function applyPresence(raw) {
 
   statusEl.classList.remove("online", "idle", "dnd", "offline");
   statusEl.classList.add(presence);
+  const icon = statusIconPath(presence, data);
+  statusEl.classList.toggle("has-icon", Boolean(icon.path));
+  statusEl.classList.toggle("mobile-status", icon.mobile);
+  if (statusIcon) {
+    if (icon.path) {
+      statusIcon.src = icon.path;
+    } else {
+      statusIcon.removeAttribute("src");
+    }
+  }
   statusEl.title = statusLabel(presence);
   statusEl.setAttribute("aria-label", statusLabel(presence));
 

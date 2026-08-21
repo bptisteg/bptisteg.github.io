@@ -79,6 +79,10 @@ function applyLang() {
   if (typeof window.refreshPresenceLabels === "function") {
     window.refreshPresenceLabels();
   }
+
+  if (typeof window.refreshLastUpdated === "function") {
+    window.refreshLastUpdated();
+  }
 }
 
 document.querySelectorAll(".lang-switch button").forEach((btn) => {

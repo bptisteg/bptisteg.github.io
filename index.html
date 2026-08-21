@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.scdn.co https://baptisteg.goatcounter.com; connect-src 'self' https://api.lanyard.rest https://baptisteg.goatcounter.com wss://api.lanyard.rest;"
+      content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.scdn.co https://baptisteg.goatcounter.com https://cdn.discordapp.com; connect-src 'self' https://api.lanyard.rest https://baptisteg.goatcounter.com wss://api.lanyard.rest;"
     />
     <meta name="theme-color" content="#36393f" />
     <meta name="description" content="Baptiste G. creates Discord bots and web projects while serving in the French Navy." />
@@ -51,7 +51,15 @@
     <div class="centered">
       <div class="pfp">
         <img class="avatar" src="assets/pfp.png" alt="Baptiste G." width="120" height="120" />
-        <span class="status idle" title="Idle" aria-label="Idle"></span>
+        <img
+          class="avatar-decoration"
+          src="https://cdn.discordapp.com/avatar-decoration-presets/a_89cd445201a0c6c64d46876503d0e90e.png?size=240"
+          alt=""
+          aria-hidden="true"
+        />
+        <span class="status idle" title="Idle" aria-label="Idle">
+          <img class="status-icon" alt="" aria-hidden="true" />
+        </span>
         <span class="status-bubble">Enjoy my job</span>
       </div>
 
@@ -163,13 +171,13 @@
         </a>
       </div>
         <footer class="site-meta">
-          <span><span data-i18n="lastUpdated">Last updated</span>: 19 August 2026</span>
+          <span><span data-i18n="lastUpdated">Last updated</span>: <time id="last-updated" datetime="2026-08-19">19 August 2026</time></span>
           <span><span data-i18n="visits">Visits</span>: <strong id="visit-count">-</strong></span>
         </footer>
     </div>
     <script src="js/i18n.js"></script>
     <script data-goatcounter="https://baptisteg.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <script src="js/site.js"></script>
-    <script src="js/status.js"></script>
+    <script src="js/status.js?v=20260821"></script>
   </body>
 </html>

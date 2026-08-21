@@ -1,6 +1,21 @@
 const themeToggle = document.getElementById("theme-toggle");
 const visitCount = document.getElementById("visit-count");
+const lastUpdated = document.getElementById("last-updated");
 const themeMeta = document.querySelector('meta[name="theme-color"]');
+let lastUpdatedAt = null;
+
+function refreshLastUpdated() {
+  if (!lastUpdated || !lastUpdatedAt) return;
+
+  const locale = window.currentLang === "fr" ? "fr-FR" : "en-US";
+  lastUpdated.textContent = new Intl.DateTimeFormat(locale, {
+    dateStyle: "long",
+    timeStyle: "short",
+  }).format(lastUpdatedAt);
+  lastUpdated.dateTime = lastUpdatedAt.toISOString();
+}
+
+window.refreshLastUpdated = refreshLastUpdated;
 
 function applyTheme(theme) {
   const isLight = theme === "light";
@@ -36,6 +51,8 @@ function updateVisitCount() {
       const totalVisits = Number(data.count);
       if (!Number.isFinite(totalVisits)) throw new Error("Visit counter returned an invalid count");
       visitCount.textContent = totalVisits.toLocaleString();
+      lastUpdatedAt = new Date();
+      refreshLastUpdated();
     })
     .catch((error) => {
       console.warn("Unable to load the shared visit counter.", error);
