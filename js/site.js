@@ -24,27 +24,28 @@ themeToggle?.addEventListener("click", () => {
   applyTheme(document.body.classList.contains("light-theme") ? "dark" : "light");
 });
 
-const visitorKey = "baptisteg-visitor-id";
-const visitCountKey = "baptisteg-visit-count";
-
-function getVisitorId() {
-  let visitorId = localStorage.getItem(visitorKey);
-  if (!visitorId) {
-    visitorId = crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-    localStorage.setItem(visitorKey, visitorId);
-    return { visitorId, isNew: true };
-  }
-  return { visitorId, isNew: false };
-}
-
 function updateVisitCount() {
-  const storedVisits = Number.parseInt(localStorage.getItem(visitCountKey) || "0", 10);
-  const visits = Number.isFinite(storedVisits) ? storedVisits : 0;
-  const visitor = getVisitorId();
-  const totalVisits = visitor.isNew ? visits + 1 : visits;
+  if (!visitCount) return;
 
-  localStorage.setItem(visitCountKey, String(totalVisits));
-  if (visitCount) visitCount.textContent = totalVisits.toLocaleString();
+  const renderVisitCount = () => {
+    if (!window.goatcounter?.visit_count) return false;
+
+    window.goatcounter.visit_count({
+      append: "#visit-count",
+      path: "TOTAL",
+      no_branding: true,
+      attr: { "aria-label": "Total visits" },
+    });
+    return true;
+  };
+
+  if (renderVisitCount()) return;
+
+  const waitForGoatCounter = window.setInterval(() => {
+    if (!renderVisitCount()) return;
+    window.clearInterval(waitForGoatCounter);
+  }, 100);
+  window.setTimeout(() => window.clearInterval(waitForGoatCounter), 5000);
 }
 
 updateVisitCount();
