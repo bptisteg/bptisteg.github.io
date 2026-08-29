@@ -2199,12 +2199,21 @@ body.tt-login-page.is-exploring::after {
 
 @media (max-width: 640px) {
   .tt-login-page {
-    --login-top-h: 60px;
+    --login-top-h: 56px;
   }
 
   .tt-login-top {
     width: 100%;
-    padding: 12px 12px;
+    padding: 10px 12px;
+  }
+
+  .tt-login-top__brand img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tt-login-top__brand span {
+    font-size: 1rem;
   }
 
   .tt-login__slash-more {
@@ -2212,8 +2221,8 @@ body.tt-login-page.is-exploring::after {
   }
 
   .tt-login__hero-center {
-    gap: 28px;
-    padding: 28px 14px 22px;
+    gap: 24px;
+    padding: 24px 14px 20px;
   }
 
   .tt-login__demo {
@@ -2249,27 +2258,59 @@ body.tt-login-page.is-exploring::after {
 /* Enhanced mobile optimizations for modern phones */
 @media (max-width: 480px) {
   .tt-login-page {
-    --login-top-h: 56px;
+    --login-top-h: 52px;
   }
 
   .tt-login-top {
-    padding: 10px 10px;
+    padding: 8px 10px;
+  }
+
+  .tt-login-top__brand img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tt-login-top__brand span {
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 375px) {
+  body.tt-login-page {
+    --preview-banner-h: 76px;
+  }
+
+  .tt-preview-banner {
+    font-size: 0.68rem;
+    padding: 10px 10px;
+    gap: 4px 6px;
+  }
+
+  .tt-preview-banner__tag {
+    font-size: 0.58rem;
+    padding: 2px 5px;
+  }
+
+  .tt-login-page {
+    --login-top-h: 48px;
+  }
+
+  .tt-login-top {
+    padding: 6px 8px;
+  }
+
   .tt-login-top__brand img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 
   .tt-login-top__brand span {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   .tt-login__hero-center {
-    gap: 20px;
-    padding: 20px 12px 18px;
+    gap: 18px;
+    padding: 18px 10px 16px;
     max-width: 100%;
     overflow: hidden;
   }
@@ -2476,7 +2517,7 @@ body.tt-login-page {
 }
 
 body.tt-login-page {
-  --preview-banner-h: 40px;
+  --preview-banner-h: 48px;
   padding-top: calc(var(--login-top-h) + var(--preview-banner-h)) !important;
 }
 
@@ -2496,7 +2537,7 @@ body {
   flex-wrap: wrap;
   gap: 8px 10px;
   min-height: var(--preview-banner-h);
-  padding: 7px 16px;
+  padding: 10px 16px;
   box-sizing: border-box;
   background: linear-gradient(90deg, rgba(88, 101, 242, 0.22), rgba(71, 82, 196, 0.28));
   border-bottom: 1px solid rgba(148, 156, 247, 0.35);
@@ -2541,12 +2582,20 @@ body {
 
 @media (max-width: 640px) {
   body.tt-login-page {
-    --preview-banner-h: 52px;
+    --preview-banner-h: 68px;
   }
 
   .tt-preview-banner {
-    font-size: 0.75rem;
-    padding: 6px 12px;
+    font-size: 0.72rem;
+    padding: 8px 12px;
+    gap: 6px 8px;
+    min-height: var(--preview-banner-h);
+    align-items: center;
+  }
+
+  .tt-preview-banner__tag {
+    font-size: 0.62rem;
+    padding: 2px 6px;
   }
 
   .tt-login-page .tt-login-top {
