@@ -2271,6 +2271,190 @@ body.tt-login-page.is-exploring::after {
   .tt-login-site-footer__brand {
     max-width: none;
   }
+}
+
+/* Enhanced mobile optimizations for modern phones */
+@media (max-width: 480px) {
+  .tt-login-page {
+    --login-top-h: 56px;
+  }
+
+  .tt-login-top {
+    padding: 10px 10px;
+  }
+
+  .tt-login-top__brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tt-login-top__brand span {
+    font-size: 1.1rem;
+  }
+
+  .tt-login__hero-center {
+    gap: 20px;
+    padding: 20px 12px 18px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .tt-login__brand h1 {
+    font-size: 2rem;
+  }
+
+  .tt-login__tagline-lead {
+    font-size: 0.9rem;
+  }
+
+  .tt-login__slash-head {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+  }
+
+  .tt-login__slash-row {
+    padding: 8px 10px;
+  }
+
+  .tt-login__slash-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tt-login__slash-cmd {
+    font-size: 0.85rem;
+  }
+
+  .tt-login__slash-arg-text {
+    font-size: 0.85rem;
+  }
+
+  .tt-login__btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .tt-login__btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tt-login__platforms {
+    gap: 8px;
+  }
+
+  .tt-login__platform {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tt-login__platform svg,
+  .tt-login__platform i {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+
+  .tt-login-features {
+    padding: 40px 12px 24px;
+  }
+
+  .tt-login-features__head h2 {
+    font-size: 1.5rem;
+  }
+
+  .tt-login-feature {
+    padding: 16px;
+  }
+
+  .tt-login-feature__icon {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .tt-login-feature__text h3 {
+    font-size: 1rem;
+  }
+
+  .tt-login-feature__text p {
+    font-size: 0.85rem;
+  }
+
+  .tt-login-site-footer__panel {
+    padding: 18px 12px 16px;
+  }
+
+  .tt-login-site-footer__brand-link img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tt-login-site-footer__tagline {
+    font-size: 0.85rem;
+  }
+
+  .tt-login-site-footer__copy-line {
+    font-size: 0.75rem;
+  }
+}
+
+/* Extra small devices (≤374px) */
+@media (max-width: 374px) {
+  .tt-login__brand h1 {
+    font-size: 1.6rem;
+  }
+
+  .tt-login__tagline-lead {
+    font-size: 0.85rem;
+  }
+
+  .tt-login__slash-head {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+  }
+
+  .tt-login__slash-row {
+    padding: 6px 8px;
+  }
+
+  .tt-login__slash-avatar {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tt-login__slash-cmd {
+    font-size: 0.8rem;
+  }
+
+  .tt-login__slash-arg-text {
+    font-size: 0.8rem;
+  }
+
+  .tt-login__btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .tt-login-features__grid {
+    gap: 12px;
+  }
+
+  .tt-login-feature {
+    padding: 12px;
+  }
+
+  .tt-login-feature__icon {
+    font-size: 1rem;
+  }
+
+  .tt-login-feature__text h3 {
+    font-size: 0.95rem;
+  }
+
+  .tt-login-feature__text p {
+    font-size: 0.8rem;
+  }
+}
 
   .tt-login-site-footer__nav {
     flex-direction: column;
