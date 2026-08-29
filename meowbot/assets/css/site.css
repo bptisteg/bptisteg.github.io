@@ -442,7 +442,7 @@ body.tt-login-page .tt-lang-dd__menu button {
 .tt-login__platforms-box {
   position: absolute;
   z-index: 4;
-  top: 18px;
+  top: calc(var(--preview-banner-h) + 18px);
   right: max(16px, 2.5vw);
   width: min(228px, 34vw);
   margin: 0;
@@ -2186,7 +2186,7 @@ body.tt-login-page.is-exploring::after {
   }
 
   .tt-login__platforms-box {
-    top: 12px;
+    top: calc(var(--preview-banner-h) + 12px);
     right: 12px;
     width: min(200px, 48vw);
     padding: 7px 8px 8px;
@@ -2279,8 +2279,58 @@ body.tt-login-page.is-exploring::after {
     --login-top-h: 56px;
   }
 
+  .tt-login__platforms-box {
+    top: calc(var(--preview-banner-h) + 8px);
+    right: 8px;
+    width: min(180px, 52vw);
+    padding: 6px 8px 7px;
+  }
+
+  .tt-login__platforms-label {
+    font-size: 0.58rem;
+    margin-bottom: 6px;
+  }
+
+  .tt-login__platform {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tt-login__platform svg,
+  .tt-login__platform .fa {
+    width: 11px;
+    height: 11px;
+    font-size: 0.82rem;
+  }
+
   .tt-login-top {
     padding: 10px 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .tt-login__platforms-box {
+    top: calc(var(--preview-banner-h) + 6px);
+    right: 6px;
+    width: min(160px, 56vw);
+    padding: 5px 6px 6px;
+  }
+
+  .tt-login__platforms-label {
+    font-size: 0.54rem;
+    margin-bottom: 5px;
+  }
+
+  .tt-login__platform {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tt-login__platform svg,
+  .tt-login__platform .fa {
+    width: 10px;
+    height: 10px;
+    font-size: 0.78rem;
   }
 
   .tt-login-top__brand img {
@@ -2396,6 +2446,7 @@ body.tt-login-page.is-exploring::after {
   .tt-login-site-footer__copy-line {
     font-size: 0.75rem;
   }
+}
 }
 
 /* Extra small devices (≤374px) */
@@ -2560,6 +2611,11 @@ body {
   scroll-margin-top: calc(var(--login-top-h) + var(--preview-banner-h) + 16px);
 }
 
+.tt-login-site-footer {
+  position: relative;
+  z-index: 10;
+}
+
 @media (max-width: 640px) {
   body.tt-login-page {
     --preview-banner-h: 52px;
@@ -2568,6 +2624,18 @@ body {
   .tt-preview-banner {
     font-size: 0.75rem;
     padding: 6px 12px;
+  }
+
+  .tt-login-page .tt-login-top {
+    top: var(--preview-banner-h);
+  }
+
+  .tt-login-page .tt-login__hero-land {
+    min-height: calc(100vh - var(--login-top-h) - var(--preview-banner-h));
+  }
+
+  .tt-login-page .tt-login-features {
+    scroll-margin-top: calc(var(--login-top-h) + var(--preview-banner-h) + 16px);
   }
 }
 
