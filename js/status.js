@@ -5,23 +5,13 @@ const LOCAL_DECORATION_ASSET = "a_89cd445201a0c6c64d46876503d0e90e";
 const statusEl = document.querySelector(".status");
 const statusIcon = document.querySelector(".status-icon");
 const avatarDecoration = document.querySelector(".avatar-decoration");
-const bubbleEl = document.querySelector(".status-bubble");
 const spotifyBox = document.getElementById("spotify");
 const spotifyArt = document.getElementById("spotify-art");
 const spotifySong = document.getElementById("spotify-song");
 const spotifyArtist = document.getElementById("spotify-artist");
-const spotifyProgress = document.getElementById("spotify-progress");
-const spotifyBar = document.querySelector(".spotify-bar");
 const spotifyLabel = document.querySelector(".spotify-label");
-const spotifyCurrent = document.getElementById("spotify-current");
-const spotifyDuration = document.getElementById("spotify-duration");
 let lastPresence = "idle";
 let lastSpotify = null;
-let progressTimer = null;
-
-function statusLabel(presence) {
-  return translations[window.currentLang]?.status?.[presence] || presence;
-}
 
 function statusIconPath(presence, data) {
   if (presence === "online") {
@@ -90,21 +80,8 @@ function applyPresence(raw) {
       statusIcon.removeAttribute("src");
     }
   }
-  statusEl.title = statusLabel(presence);
-  statusEl.setAttribute("aria-label", statusLabel(presence));
-
-  const custom = (data.activities || []).find((activity) => activity.type === 4);
-  const text = String(custom?.state || "").trim();
-
-  if (bubbleEl) {
-    if (presence === "offline" || !text) {
-      bubbleEl.classList.add("hidden");
-      bubbleEl.textContent = "";
-    } else {
-      bubbleEl.textContent = text;
-      bubbleEl.classList.remove("hidden");
-    }
-  }
+  statusEl.title = presence;
+  statusEl.setAttribute("aria-label", presence);
 
   updateSpotify(extractSpotify(data));
 }
@@ -134,38 +111,23 @@ function extractSpotify(data) {
     artist: listening.state || "",
     album: listening.assets?.large_text || "",
     album_art_url: albumArt,
-    timestamps: listening.timestamps || {},
   };
 }
-
-window.refreshPresenceLabels = function refreshPresenceLabels() {
-  if (statusEl) {
-    statusEl.title = statusLabel(lastPresence);
-    statusEl.setAttribute("aria-label", statusLabel(lastPresence));
-  }
-  updateSpotify(lastSpotify);
-};
 
 function updateSpotify(spotify) {
   lastSpotify = spotify;
   if (!spotifyBox) return;
-
-  clearInterval(progressTimer);
 
   if (!spotify) {
     spotifyBox.classList.add("idle");
     spotifyBox.href = "https://open.spotify.com/";
     if (spotifyArt) {
       spotifyArt.removeAttribute("src");
-      spotifyArt.hidden = true;
     }
     if (spotifySong) spotifySong.textContent = "Spotify";
     if (spotifyArtist) spotifyArtist.textContent = "";
-    if (spotifyCurrent) spotifyCurrent.textContent = "0:00";
-    if (spotifyDuration) spotifyDuration.textContent = "0:00";
     if (spotifyLabel) {
-      spotifyLabel.dataset.i18n = "notListening";
-      spotifyLabel.textContent = t("notListening");
+      spotifyLabel.textContent = "Not listening";
     }
     return;
   }
@@ -176,35 +138,12 @@ function updateSpotify(spotify) {
   if (spotifyArt) {
     spotifyArt.src = spotify.album_art_url;
     spotifyArt.alt = spotify.album || spotify.song || "";
-    spotifyArt.hidden = false;
   }
   if (spotifySong) spotifySong.textContent = spotify.song || "";
   if (spotifyArtist) spotifyArtist.textContent = spotify.artist || "";
   if (spotifyLabel) {
-    spotifyLabel.dataset.i18n = "listening";
-    spotifyLabel.textContent = t("listening");
+    spotifyLabel.textContent = "Listening";
   }
-  const start = Number(spotify.timestamps?.start) || 0;
-  const end = Number(spotify.timestamps?.end) || 0;
-
-  function formatTime(ms) {
-    const total = Math.max(0, Math.floor(ms / 1000));
-    const minutes = String(Math.floor(total / 60)).padStart(2, "0");
-    const seconds = String(total % 60).padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  }
-
-  function tick() {
-    if (!end || end <= start) return;
-    const elapsed = Math.min(end - start, Math.max(0, Date.now() - start));
-    const ratio = elapsed / (end - start);
-    if (spotifyProgress) spotifyProgress.style.width = `${ratio * 100}%`;
-    if (spotifyCurrent) spotifyCurrent.textContent = formatTime(elapsed);
-    if (spotifyDuration) spotifyDuration.textContent = formatTime(end - start);
-  }
-
-  tick();
-  progressTimer = setInterval(tick, 1000);
 }
 
 function connectSocket() {

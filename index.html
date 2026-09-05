@@ -1,133 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.scdn.co https://baptisteg.goatcounter.com https://cdn.discordapp.com; connect-src 'self' https://api.lanyard.rest https://baptisteg.goatcounter.com wss://api.lanyard.rest;"
-    />
-    <meta name="theme-color" content="#36393f" />
-    <meta name="description" content="Baptiste G. creates Discord bots and web projects while serving in the French Navy." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Baptiste G. - Jet shooter at French Navy. Staff for Discord communities including Ticket Tool and BeamMP." />
     <meta property="og:title" content="Baptiste G." />
-    <meta property="og:description" content="Discord bots, web projects and community staff work by Baptiste G." />
-    <meta property="og:image" content="https://bptisteg.github.io/assets/banner.png" />
-    <meta property="og:image:alt" content="Baptiste G." />
+    <meta property="og:description" content="Jet shooter at French Navy. Staff for Discord communities including Ticket Tool and BeamMP." />
+    <meta property="og:image" content="https://bptisteg.github.io/assets/pfp.png" />
+    <meta property="og:image:alt" content="Photo de profil de Baptiste G." />
     <meta property="og:url" content="https://bptisteg.github.io/" />
     <title>Baptiste G.</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👋🏻%3C/text%3E%3C/svg%3E" />
-    <link rel="apple-touch-icon" href="assets/pfp.png" />
     <link rel="stylesheet" href="css/style.css" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.scdn.co https://cdn.discordapp.com https://*.scdn.co; connect-src 'self' https://api.lanyard.rest wss://api.lanyard.rest;"
+    />
   </head>
   <body>
-    <div class="banner" aria-hidden="true">
-      <img src="assets/banner.png" alt="" />
-    </div>
-
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-label="Français">
-        <img src="assets/flag-fr.svg" alt="" />
-        <span>FR</span>
-      </button>
-      <button type="button" data-lang="en" aria-label="English">
-        <img src="assets/flag-gb.svg" alt="" />
-        <span>EN</span>
-      </button>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Switch to light theme">
-        <span class="theme-icon theme-sun" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
-          </svg>
-        </span>
-        <span class="theme-icon theme-moon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" />
-          </svg>
-        </span>
-      </button>
-    </div>
-
-    <div class="centered">
+    <div class="container">
       <div class="pfp">
-        <img class="avatar" src="assets/pfp.png" alt="Baptiste G." width="120" height="120" />
+        <img class="avatar" src="assets/pfp.png" alt="Photo de profil de Baptiste G." width="120" height="120" />
         <img
           class="avatar-decoration"
           src="https://cdn.discordapp.com/avatar-decoration-presets/a_89cd445201a0c6c64d46876503d0e90e.png?size=240"
-          alt=""
+          alt="Décoration Discord"
           aria-hidden="true"
         />
-        <span class="status idle" title="Idle" aria-label="Idle">
-          <img class="status-icon" alt="" aria-hidden="true" />
+        <span class="status" title="Statut Discord" aria-label="Statut Discord">
+          <img class="status-icon" alt="Icône de statut" aria-hidden="true" />
         </span>
-        <span class="status-bubble">Enjoy my job</span>
+      </div>
+      <h2 class="name">Baptiste G.</h2>
+
+      <p class="role">A cool french guy who is a jet shooter at French Navy! <img class="flag" src="assets/flag-fr.svg" alt="Drapeau français" /></p>
+      <p class="about">In my free time, I'm staff for various Discord communities <img class="emoji" src="assets/1500212724829917365.gif" alt="Emoji Kirby" /></p>
+      <div class="projects">
+        <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer" class="project">
+          <img src="assets/icons/tickettool.png" alt="Logo Ticket Tool" width="32" height="32" loading="lazy" />
+          <span>Ticket Tool</span>
+        </a>
+        <a href="https://discord.gg/tkvtbsd7gA" target="_blank" rel="noopener noreferrer" class="project">
+          <img src="assets/meowbot.png" alt="Logo MeowBot" width="32" height="32" loading="lazy" />
+          <span>MeowBot</span>
+        </a>
+        <a href="https://beammp.com" target="_blank" rel="noopener noreferrer" class="project">
+          <img src="assets/icons/beammp.png" alt="Logo BeamMP" width="32" height="32" loading="lazy" />
+          <span>BeamMP</span>
+        </a>
       </div>
 
-      <div class="brand">
-        <div class="name">Baptiste G.</div>
-        <div class="role" data-i18n-html="role">
-          Jet shooter in the French Navy
-          <img class="flag-inline" src="assets/flag-fr.svg" alt="" />
-        </div>
-      </div>
-
-      <div class="about">
-        <p data-i18n-html="about2">
-          In my free time, I'm staff for
-          <a href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">
-            <img class="company-logo" src="assets/icons/tickettool.png" alt="" />
-            Ticket Tool
-          </a>
-          and
-          <a href="https://beammp.com" target="_blank" rel="noopener noreferrer">
-            <img class="company-logo" src="assets/icons/beammp.png" alt="" />
-            BeamMP
-          </a>
-        </p>
-        <p data-i18n-html="about3">
-      I like to code <img class="discord-emoji" src="assets/1500212724829917365.gif" alt="" /> I'm currently working on some Discord bot projects, which are still in the early stages.
-        </p>
-      </div>
-
-      <section class="projects" aria-labelledby="projects-title">
-        <h2 id="projects-title" data-i18n="projectsTitle">Projects &amp; Communities</h2>
-        <div class="project-grid">
-          <a class="project" href="https://tickettool.xyz" target="_blank" rel="noopener noreferrer">
-            <img src="assets/icons/tickettool.png" alt="" />
-            <span class="project-copy">
-              <strong>Ticket Tool</strong>
-              <span data-i18n="ticketDescription">Discord ticket management for communities.</span>
-                <small class="project-status status-community" data-i18n="communityStatus">Community staff</small>
-            </span>
-          </a>
-          <a class="project" href="https://beammp.com" target="_blank" rel="noopener noreferrer">
-            <img src="assets/icons/beammp.png" alt="" />
-            <span class="project-copy">
-              <strong>BeamMP</strong>
-              <span data-i18n="beamDescription">Multiplayer tooling for BeamNG.drive.</span>
-                <small class="project-status status-community" data-i18n="communityStatus">Community staff</small>
-            </span>
-          </a>
-          <a class="project" href="meowbot/">
-            <img src="assets/meowbot.png" alt="" />
-            <span class="project-copy">
-              <strong>MeowBot</strong>
-              <span data-i18n="meowDescription">A music bot project built for Discord.</span>
-                <small class="project-status status-development" data-i18n="developmentStatus">In development</small>
-            </span>
-          </a>
-        </div>
-      </section>
-
-      <a
-        class="spotify idle"
-        id="spotify"
-        href="https://open.spotify.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a class="spotify" id="spotify" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">
         <div class="spotify-art">
-          <img id="spotify-art" alt="" />
+          <img id="spotify-art" alt="Album art Spotify" width="48" height="48" />
           <svg class="spotify-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path
               fill="currentColor"
@@ -136,32 +62,13 @@
           </svg>
         </div>
         <div class="spotify-meta">
-          <p class="spotify-label" data-i18n="notListening">Not listening right now</p>
+          <p class="spotify-label">Not listening</p>
           <p class="spotify-song" id="spotify-song">Spotify</p>
           <p class="spotify-artist" id="spotify-artist"></p>
-          <div class="spotify-track">
-            <div class="spotify-bar">
-              <div class="spotify-progress" id="spotify-progress"></div>
-            </div>
-            <div class="spotify-times">
-              <span id="spotify-current">0:00</span>
-              <span id="spotify-duration">0:00</span>
-            </div>
-          </div>
-        </div>
-        <div class="spotify-eq" aria-hidden="true">
-          <span></span><span></span><span></span>
         </div>
       </a>
-
       <div class="socials">
-        <a
-          href="https://github.com/bptisteg"
-          target="_blank"
-          rel="noopener noreferrer"
-          tooltip="bptisteg"
-          aria-label="GitHub"
-        >
+        <a href="https://github.com/bptisteg" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub de Baptiste G.">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
               fill="currentColor"
@@ -170,14 +77,7 @@
           </svg>
         </a>
       </div>
-        <footer class="site-meta">
-          <span><span data-i18n="lastUpdated">Last updated</span>: <time id="last-updated" datetime="2026-08-19">19 August 2026</time></span>
-          <span><span data-i18n="visits">Visits</span>: <strong id="visit-count">-</strong></span>
-        </footer>
     </div>
-    <script src="js/i18n.js"></script>
-    <script data-goatcounter="https://baptisteg.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-    <script src="js/site.js"></script>
-    <script src="js/status.js?v=20260821"></script>
+    <script src="js/status.js"></script>
   </body>
 </html>
