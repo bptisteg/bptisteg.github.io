@@ -12,6 +12,58 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.lang-switch {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+}
+
+.lang-switch button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: #1a1a1a;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 5px 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  opacity: 0.55;
+}
+
+.lang-switch button img,
+.flag-inline {
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.flag-inline {
+  display: inline-block;
+  vertical-align: -1px;
+  margin-left: 4px;
+}
+
+.lang-switch button.active,
+.lang-switch button:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .container {
@@ -158,7 +210,7 @@ body {
 .name {
   font-size: 5rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
   line-height: 1;
   margin-top: 0;
@@ -247,6 +299,110 @@ body {
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.project-skeleton {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  width: 100%;
+}
+
+.project.loading .project-skeleton {
+  display: flex;
+}
+
+.project.loading img {
+  display: none;
+}
+
+.project.loaded .project-skeleton {
+  display: none;
+}
+
+.project.loaded img {
+  display: block;
+}
+
+.project.loaded span {
+  display: block;
+}
+
+.project.loading span {
+  display: none;
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.skeleton-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-text {
+  width: 100px;
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #333;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
 .socials svg {
   width: 24px;
   height: 24px;
@@ -256,9 +412,9 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: min(350px, 100%);
+  width: min(380px, 100%);
   max-width: 100%;
-  padding: 12px;
+  padding: 14px;
   border-radius: 12px;
   background: #f5f5f5;
   border: 1px solid #e0e0e0;
@@ -266,11 +422,18 @@ body {
   text-decoration: none;
   margin: 2rem auto 0;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.spotify.hidden {
+  display: none;
 }
 
 .spotify:hover {
-  background: #fff;
+  background: #53535309;
   border-color: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .spotify-art {
@@ -282,24 +445,93 @@ body {
   background: #191919;
   display: grid;
   place-items: center;
-  color: #1db954;
   min-width: 48px;
+  position: relative;
+}
+
+.spotify-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  display: none;
+}
+
+.spotify-art img[src=""] + .spotify-skeleton,
+.spotify-art img[style*="display: none"] + .spotify-skeleton {
+  display: block;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .spotify-art img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
 
-.spotify-icon {
-  width: 24px;
-  height: 24px;
+.spotify-play-icon,
+.spotify-pause-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.spotify.idle .spotify-art img,
-.spotify:not(.idle) .spotify-icon {
+.spotify:hover .spotify-play-icon,
+.spotify:hover .spotify-pause-icon {
+  opacity: 1;
+}
+
+.spotify.playing .spotify-play-icon {
   display: none;
+}
+
+.spotify.paused .spotify-pause-icon {
+  display: none;
+}
+
+.spotify:not(.playing):not(.paused) .spotify-play-icon,
+.spotify:not(.playing):not(.paused) .spotify-pause-icon {
+  display: none;
+}
+
+.spotify.playing .spotify-pause-icon {
+  display: grid;
+}
+
+.spotify.paused .spotify-play-icon {
+  display: grid;
+}
+
+.spotify-play-icon svg,
+.spotify-pause-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.spotify.playing .spotify-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(29, 185, 84, 0.1);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
 
 .spotify-meta {
@@ -309,7 +541,7 @@ body {
 }
 
 .spotify-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #1db954;
@@ -327,11 +559,49 @@ body {
 .spotify-song {
   font-size: 0.95rem;
   font-weight: 700;
+  margin-bottom: 2px;
 }
 
 .spotify-artist {
   font-size: 0.8rem;
   color: #666;
+  margin-bottom: 6px;
+}
+
+.spotify-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.spotify-progress {
+  height: 100%;
+  background: #1db954;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.spotify.paused .spotify-progress {
+  background: #888;
+}
+
+.spotify.paused .spotify-art::after {
+  display: none;
+}
+
+.spotify-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.spotify-time span {
+  font-variant-numeric: tabular-nums;
 }
 
 .projects {
@@ -362,22 +632,102 @@ body {
   object-fit: contain;
 }
 
+@media (max-width: 520px) {
+  .container {
+    padding: 15px;
+  }
+
+  .pfp {
+    margin-bottom: 1.5rem;
+  }
+
+  .name {
+    font-size: 3.5rem;
+  }
+
+  .role {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .projects {
+    gap: 0.75rem;
+  }
+
+  .project {
+    font-size: 0.95rem;
+  }
+
+  .project img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .spotify {
+    width: 100%;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .spotify-art {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .spotify-song {
+    font-size: 0.85rem;
+  }
+
+  .spotify-artist {
+    font-size: 0.75rem;
+  }
+
+  .spotify-time {
+    font-size: 0.7rem;
+  }
+
+  .spotify-progress-bar {
+    height: 3px;
+  }
+
+  .lang-switch {
+    top: 12px;
+    right: 12px;
+  }
+
+  .lang-switch button {
+    font-size: 0.7rem;
+    padding: 4px 6px;
+  }
+
+  .lang-switch button img {
+    width: 16px;
+    height: 11px;
+  }
+}
+
 @media (min-width: 768px) {
   .name {
     font-size: 8rem;
   }
-  
-  .projects {
+
+  .projects-grid {
     flex-direction: row;
     justify-content: center;
   }
-  
+
   .project::after {
     content: " •";
     color: #ccc;
     margin-left: 0.5rem;
   }
-  
+
   .project:last-child::after {
     content: "";
   }

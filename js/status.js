@@ -10,8 +10,12 @@ const spotifyArt = document.getElementById("spotify-art");
 const spotifySong = document.getElementById("spotify-song");
 const spotifyArtist = document.getElementById("spotify-artist");
 const spotifyLabel = document.querySelector(".spotify-label");
+const spotifyCurrent = document.getElementById("spotify-current");
+const spotifyDuration = document.getElementById("spotify-duration");
+const spotifyProgress = document.getElementById("spotify-progress");
 let lastPresence = "idle";
 let lastSpotify = null;
+let progressTimer = null;
 
 function statusIconPath(presence, data) {
   if (presence === "online") {
@@ -111,6 +115,8 @@ function extractSpotify(data) {
     artist: listening.state || "",
     album: listening.assets?.large_text || "",
     album_art_url: albumArt,
+    timestamps: listening.timestamps || {},
+    is_paused: listening.paused || false,
   };
 }
 
@@ -118,31 +124,76 @@ function updateSpotify(spotify) {
   lastSpotify = spotify;
   if (!spotifyBox) return;
 
+  clearInterval(progressTimer);
+
   if (!spotify) {
-    spotifyBox.classList.add("idle");
-    spotifyBox.href = "https://open.spotify.com/";
-    if (spotifyArt) {
-      spotifyArt.removeAttribute("src");
-    }
-    if (spotifySong) spotifySong.textContent = "Spotify";
-    if (spotifyArtist) spotifyArtist.textContent = "";
-    if (spotifyLabel) {
-      spotifyLabel.textContent = "Not listening";
-    }
+    spotifyBox.classList.add("hidden");
+    spotifyBox.classList.remove("playing", "paused");
     return;
   }
 
-  spotifyBox.classList.remove("idle");
+  spotifyBox.classList.remove("hidden");
+  spotifyBox.classList.toggle("paused", spotify.is_paused || false);
+  spotifyBox.classList.toggle("playing", !spotify.is_paused);
   spotifyBox.href = `https://open.spotify.com/track/${spotify.track_id}`;
 
-  if (spotifyArt) {
-    spotifyArt.src = spotify.album_art_url;
-    spotifyArt.alt = spotify.album || spotify.song || "";
+  // Update label based on pause state
+  if (spotifyLabel) {
+    const lang = document.documentElement.lang || 'en';
+    const translations = window.translations || { en: { spotifyLabel: "Listening to Spotify", spotifyPaused: "Paused on Spotify" }, fr: { spotifyLabel: "Écoute Spotify", spotifyPaused: "En pause sur Spotify" } };
+    const labelKey = spotify.is_paused ? 'spotifyPaused' : 'spotifyLabel';
+    spotifyLabel.textContent = translations[lang]?.[labelKey] || translations.en[labelKey];
   }
+
+  if (spotifyArt) {
+    // Show skeleton while loading
+    spotifyArt.style.display = 'none';
+    const skeleton = spotifyArt.previousElementSibling;
+    if (skeleton && skeleton.classList.contains('spotify-skeleton')) {
+      skeleton.style.display = 'block';
+    }
+
+    // Load image with error handling
+    const img = new Image();
+    img.onload = () => {
+      spotifyArt.src = spotify.album_art_url;
+      spotifyArt.alt = spotify.album || spotify.song || "";
+      spotifyArt.style.display = 'block';
+      if (skeleton) skeleton.style.display = 'none';
+    };
+    img.onerror = () => {
+      // Fallback to skeleton if image fails
+      if (skeleton) skeleton.style.display = 'block';
+      spotifyArt.style.display = 'none';
+    };
+    img.src = spotify.album_art_url;
+  }
+
   if (spotifySong) spotifySong.textContent = spotify.song || "";
   if (spotifyArtist) spotifyArtist.textContent = spotify.artist || "";
-  if (spotifyLabel) {
-    spotifyLabel.textContent = "Listening";
+
+  const start = Number(spotify.timestamps?.start) || 0;
+  const end = Number(spotify.timestamps?.end) || 0;
+
+  function formatTime(ms) {
+    const total = Math.max(0, Math.floor(ms / 1000));
+    const minutes = String(Math.floor(total / 60)).padStart(2, "0");
+    const seconds = String(total % 60).padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  }
+
+  function tick() {
+    if (!end || end <= start) return;
+    const elapsed = Math.min(end - start, Math.max(0, Date.now() - start));
+    const ratio = elapsed / (end - start);
+    if (spotifyProgress) spotifyProgress.style.width = `${ratio * 100}%`;
+    if (spotifyCurrent) spotifyCurrent.textContent = formatTime(elapsed);
+    if (spotifyDuration) spotifyDuration.textContent = formatTime(end - start);
+  }
+
+  tick();
+  if (!spotify.is_paused) {
+    progressTimer = setInterval(tick, 1000);
   }
 }
 
