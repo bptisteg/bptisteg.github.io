@@ -347,16 +347,28 @@ body {
   display: none;
 }
 
-.project.loaded img {
-  display: block;
+.project.loaded .project-body {
+  display: flex;
 }
 
-.project.loaded span {
-  display: block;
-}
-
-.project.loading span {
+.project.loading .project-body {
   display: none;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-description {
+  display: block;
+  color: #666;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-align: center;
+  max-width: 150px;
 }
 
 .projects-grid {
@@ -614,8 +626,9 @@ body {
 
 .project {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 0.45rem;
   color: #000;
   text-decoration: none;
   font-size: 1.1rem;
@@ -624,6 +637,20 @@ body {
 
 .project:hover {
   opacity: 0.6;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .project img {
@@ -721,20 +748,8 @@ body {
   .projects-grid {
     flex-direction: row;
     justify-content: center;
+    gap: 1.5rem;
   }
-
-  .project::after {
-    content: " •";
-    color: #ccc;
-    margin-left: 0.5rem;
-  }
-
-  .project:last-child::after {
-    content: "";
-  }
-
-  
-
 }
 
 
