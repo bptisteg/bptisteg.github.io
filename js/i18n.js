@@ -8,7 +8,7 @@ const translations = {
     notListening: "Not listening"
   },
   fr: {
-    role: "Un type cool français qui est OPS manutention d'aéronerf dans la Marine Nationale! <img class=\"flag\" src=\"assets/flag-fr.svg\" alt=\"Drapeau français\" />",
+    role: "Un gars cool qui et français qui est OPS manutention d'aéronerf dans la Marine Nationale! <img class=\"flag\" src=\"assets/flag-fr.svg\" alt=\"Drapeau français\" />",
     about: "Pendant mon temps libre, je suis staff pour diverses communautés Discord <img class=\"emoji\" src=\"assets/1500212724829917365.gif\" alt=\"Emoji Kirby\" />",
     projects: "Projets",
     spotifyLabel: "Écoute Spotify",
