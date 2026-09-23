@@ -226,10 +226,17 @@ body {
 .about {
   font-size: 1rem;
   color: #888;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.role-emojis {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 3rem;
 }
 
 .flag {
