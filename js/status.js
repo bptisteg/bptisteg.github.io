@@ -16,6 +16,7 @@ const spotifyProgress = document.getElementById("spotify-progress");
 let lastPresence = "idle";
 let lastSpotify = null;
 let progressTimer = null;
+let lastIconPath = "";
 
 function statusIconPath(presence, data) {
   if (presence === "online") {
@@ -78,10 +79,17 @@ function applyPresence(raw) {
   statusEl.classList.toggle("has-icon", Boolean(icon.path));
   statusEl.classList.toggle("mobile-status", icon.mobile);
   if (statusIcon) {
-    if (icon.path) {
+    if (icon.path && icon.path !== lastIconPath) {
       statusIcon.src = icon.path;
-    } else {
+      lastIconPath = icon.path;
+      statusIcon.onerror = () => {
+        console.error('Failed to load status icon:', icon.path);
+        statusEl.classList.remove('has-icon');
+        lastIconPath = "";
+      };
+    } else if (!icon.path) {
       statusIcon.removeAttribute("src");
+      lastIconPath = "";
     }
   }
   statusEl.title = presence;
